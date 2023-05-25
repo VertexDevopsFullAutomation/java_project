@@ -1,0 +1,34 @@
+---
+- hosts: dev
+  become: True
+  tasks:
+      - name: Install python pip
+        apt:
+          name: python3-pip
+          state: present
+          
+      - name: Insatll docker
+        apt:
+           name: docker
+           state: present
+           
+      - name: start docker
+        service:
+           name: docker
+           start: started
+           enabled: yes 
+            
+           
+      - name: Install docker-py python module 
+        pip:
+          name: docker-py 
+          state: present
+
+      - name: Start the container
+        docker_container:
+          name: hariapp
+          image: "nbktechnosys/jenkinsbuild:0.1" 
+          state: started
+         
+          published_ports:
+           - 0.0.0.0:8080:8080
