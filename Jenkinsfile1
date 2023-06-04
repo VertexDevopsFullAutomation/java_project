@@ -10,7 +10,11 @@ pipeline{
         stage('Git Clone'){
             
             steps{
+<<<<<<< HEAD
                 git branch: 'SIT', url: 'https://github.com/VertexDevopsFullAutomation/java_project.git'
+=======
+                git branch: 'main', url: 'https://github.com/VertexDevopsFullAutomation/java_project.git'
+>>>>>>> a4a3b75 (Rename Jenkinsfile to Jenkinsfile1)
             }
         }
         
@@ -34,6 +38,7 @@ pipeline{
         
         stage('Docker Build'){
             steps{
+<<<<<<< HEAD
 <<<<<<< HEAD:Jenkinsfile1
                 sh 'docker build -t vertexdevops/sit .'
 =======
@@ -43,6 +48,9 @@ pipeline{
                 sh 'docker build -t vertexdevops/sit .'
 >>>>>>> 2762d4f (Update Jenkinsfile)
 >>>>>>> 98c6bc8 (m):Jenkinsfile
+=======
+                sh 'docker build -t vertexdevops/production .'
+>>>>>>> a4a3b75 (Rename Jenkinsfile to Jenkinsfile1)
             }
         }
         
@@ -51,6 +59,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'Dockerhub', variable: 'dockerpush')]) {
                 sh 'docker login -u vertexdevops -p ${dockerpush}'
                 }
+<<<<<<< HEAD
 <<<<<<< HEAD:Jenkinsfile1
                  sh 'docker push vertexdevops/sit'
 =======
@@ -60,6 +69,9 @@ pipeline{
                  sh 'docker push vertexdevops/sit'
 >>>>>>> 2762d4f (Update Jenkinsfile)
 >>>>>>> 98c6bc8 (m):Jenkinsfile
+=======
+                 sh 'docker push vertexdevops/production'
+>>>>>>> a4a3b75 (Rename Jenkinsfile to Jenkinsfile1)
             }
            
         }
