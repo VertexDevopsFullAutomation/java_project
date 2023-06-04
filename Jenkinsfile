@@ -34,7 +34,7 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-                sh 'docker build -t vertexdevops/UAT .'
+                sh 'docker build -t vertexdevops/uat .'
             }
         }
         
@@ -43,7 +43,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'Dockerhub', variable: 'dockerpush')]) {
                 sh 'docker login -u vertexdevops -p ${dockerpush}'
                 }
-                 sh 'docker push vertexdevops/UAT'
+                 sh 'docker push vertexdevops/uat'
             }
            
         }
