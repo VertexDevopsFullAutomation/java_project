@@ -34,11 +34,7 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-<<<<<<< HEAD
                 sh 'docker build -t vertexdevops/uat .'
-=======
-                sh 'docker build -t vertexdevops/sit .'
->>>>>>> 2762d4f (Update Jenkinsfile)
             }
         }
         
@@ -47,11 +43,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'Dockerhub', variable: 'dockerpush')]) {
                 sh 'docker login -u vertexdevops -p ${dockerpush}'
                 }
-<<<<<<< HEAD
                  sh 'docker push vertexdevops/uat'
-=======
-                 sh 'docker push vertexdevops/sit'
->>>>>>> 2762d4f (Update Jenkinsfile)
             }
            
         }
