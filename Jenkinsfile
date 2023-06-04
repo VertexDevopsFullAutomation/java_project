@@ -34,7 +34,7 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-                sh 'docker build -t vertexdevops/docker_image:1 .'
+                sh 'docker build -t vertexdevops/dev .'
             }
         }
         
@@ -43,7 +43,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'Dockerhub', variable: 'dockerpush')]) {
                 sh 'docker login -u vertexdevops -p ${dockerpush}'
                 }
-                 sh 'docker push vertexdevops/docker_image:1'
+                 sh 'docker push vertexdevops/dev'
             }
            
         }
